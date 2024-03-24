@@ -45,7 +45,6 @@ col_name = [str(x) for x in range(415)]
 data_proj_raw = pd.read_excel(fpath_proj, header=0, names=col_name) # dimensions 181x415
 
 
-
 #%%
 """
 ### Select the rows corresponding to the files of the people who went to the final page 
@@ -117,17 +116,28 @@ uniquetitle_lst = title_lst.unique()
 title_test  = title_lst.value_counts()
 
 #%%
+"""
+### Process the text data
+"""
+### convert title_lst into a list
 text = title_lst.tolist()
-
+### join the words from all the input
 collapsed_text = (' ').join(text)
+### remove useless words in French
 collapsed_text2 = collapsed_text.replace(' de ', ' ').replace(' le ', ' ').replace(' pour ', ' ').replace(' du ', ' ').replace(' la ', ' ').replace(' à ', ' ').replace(' un ', ' ').replace(' une ', ' ').replace(' et ', ' ').replace(' des ', ' ')
+### remove useless words in English
 collapsed_text3 = collapsed_text2.replace(' of ', ' ').replace(' the ', ' ').replace(' for ', ' ').replace(' in ', ' ').replace(' at ', ' ')
 
 #%%
-#wordcloud = WordCloud().generate(text[0])
+"""
+### Use WordCloud class to generate the data to plot
+"""
 wordcloud = WordCloud(max_font_size=50, max_words=100, background_color="white").generate(collapsed_text3)
 
 #%%
+"""
+### plot of wordcloud for project titles
+"""
 fname_plt = 'wordcloud_projecttitle.png'
 fpath_plt = fdir_sav / fname_plt
 
@@ -135,6 +145,7 @@ plt.figure(0)
 plt.clf()
 plt.imshow(wordcloud, interpolation='bilinear')
 plt.axis("off")
+plt.title('Word cloud for project titles')
 plt.tight_layout()
 plt.savefig(fpath_plt)
 plt.show()
