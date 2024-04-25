@@ -61,105 +61,105 @@ data_proj = data_proj_raw.loc[:,:]
 
 #%%
 """
-### Liste de laboratoires
+### 1.1 Laboratoire de la personne porteuse du projet
 """
-labos_lst = data_proj['5']
+q101_lst = data_proj['5']
 
-uniquelabos_lst = labos_lst.unique()
+unique_q101_lst = q101_lst.unique()
 
-labos_stats  = labos_lst.value_counts()
+q101_stats  = q101_lst.value_counts()
 
-print(labos_stats)
+print(q101_stats)
 
 #%%
 """
-### Personnel ayant répondu
+### 1.3 Statut de la personne porteuse du projet
 """
-personnel_lst = data_proj['7']
+q103_lst = data_proj['7']
 
-uniquepersonnel_lst = personnel_lst.unique()
+unique_q103_lst = q103_lst.unique()
 
-personnel_stats  = personnel_lst.value_counts()
+q103_stats  = q103_lst.value_counts()
 
-print(personnel_stats)
+print(q103_stats)
 
 #%%
 """
-### Genre de la personne ayant répondu
+### 1.4 Genre de la personne porteuse du projet
 """
-gender_lst = data_proj['9']
+q104_lst = data_proj['9']
 
-uniquegender_lst = gender_lst.unique()
+unique_q104_lst = q104_lst.unique()
 
-gender_stats = gender_lst.value_counts()
+q104_stats = q104_lst.value_counts()
 
-print(gender_stats)
+print(q104_stats)
 
 #%%
 """
-### Age de la personne ayant répondu
+### 1.5 Age de la personne porteuse du projet
 """
-age_lst = data_proj['10']
+q105_lst = data_proj['10']
 
-uniqueage_lst = age_lst.unique()
+unique_q105_lst = q105_lst.unique()
 
-age_stats = age_lst.value_counts()
+q105_stats = q105_lst.value_counts()
 
-print(age_stats)
+print(q105_stats)
 
 #%%
 """
-### Connaissance formation pour la personne ayant répondu
+### 1.6 Connaissance formation pour la personne ayant répondu
 """
-training_lst = data_proj['11']
+q106_lst = data_proj['11']
 
-uniquetraining_lst = training_lst.unique()
+unique_q106_lst = q106_lst.unique()
 
-training_stats = training_lst.value_counts()
+q106_stats = q106_lst.value_counts()
 
-print(training_stats)
+print(q106_stats)
 
 #%%
 """
-### titre du projet 
+### 1.2 titre du projet 
 """
-title_lst = data_proj['6']
+q102_lst = data_proj['6']
 
-uniquetitle_lst = title_lst.unique()
+unique_q102_lst = q102_lst.unique()
 
-title_stats  = title_lst.value_counts()
+q102_stats  = q102_lst.value_counts()
 
-print(title_stats)
+print(q102_stats)
 
 #%%
 """
 ### Process the text data
 """
 ### convert title_lst into a list
-text = title_lst.tolist()
+text102 = q102_lst.tolist()
 ### join the words from all the input
-collapsed_text = (' ').join(text)
+collapsed_text102 = (' ').join(text102)
 ### remove useless words in French
-collapsed_text_bis = collapsed_text.replace(' de ', ' ').replace(' le ', ' ').replace(' pour ', ' ').replace(' du ', ' ').replace(' la ', ' ').replace(' à ', ' ').replace(' un ', ' ').replace(' une ', ' ').replace(' et ', ' ').replace(' des ', ' ').replace(' en ', ' ').replace(' dans ', ' ')
+collapsed_text102_bis = collapsed_text102.replace(' de ', ' ').replace(' le ', ' ').replace(' pour ', ' ').replace(' du ', ' ').replace(' la ', ' ').replace(' à ', ' ').replace(' un ', ' ').replace(' une ', ' ').replace(' et ', ' ').replace(' des ', ' ').replace(' en ', ' ').replace(' dans ', ' ')
 ### remove useless words in English
-collapsed_text_ter = collapsed_text_bis.replace(' of ', ' ').replace(' the ', ' ').replace(' for ', ' ').replace(' in ', ' ').replace(' at ', ' ')
+collapsed_text102_ter = collapsed_text102_bis.replace(' of ', ' ').replace(' the ', ' ').replace(' for ', ' ').replace(' in ', ' ').replace(' at ', ' ')
 
 #%%
 """
 ### Use WordCloud class to generate the data to plot
 """
-title_wordcloud = WordCloud(max_font_size=50, max_words=100, background_color="white").generate(collapsed_text_ter)
+q102_wordcloud = WordCloud(max_font_size=50, max_words=100, background_color="white").generate(collapsed_text102_ter)
 
 #%%
 """
 ### plot of wordcloud for project titles
 """
-fname_plt = 'wordcloud_projecttitle.png'
+fname_plt = 'wordcloud_q102_projecttitle.png'
 fpath_plt = fdir_sav / fname_plt
 
 plt.figure(0)
 plt.clf()
-plt.imshow(title_wordcloud, interpolation='bilinear')
+plt.imshow(q102_wordcloud, interpolation='bilinear')
 plt.axis("off")
 plt.title('Word cloud for project titles')
 plt.tight_layout()
@@ -168,45 +168,45 @@ plt.show()
 
 #%%
 """
-### Question scientifique qui motive le projet
+### 2.2 Question scientifique qui motive le projet
 """
-sci_question_lst = data_proj['27']
+q202_lst = data_proj['27']
 
-uniquesci_question_lst = sci_question_lst.unique()
+unique_q202_lst = q202_lst.unique()
 
-sci_question_stats  = sci_question_lst.value_counts()
+q202_stats  = q202_lst.value_counts()
 
-print(sci_question_stats)
+print(q202_stats)
 
 #%%
 """
 ### Process the science question data
 """
 ### convert title_lst into a list
-text27 = sci_question_lst.tolist()
+text202 = q202_lst.tolist()
 ### join the words from all the input
-collapsed_text27 = (' ').join(str(e) for e in text27)
+collapsed_text202 = (' ').join(str(e) for e in text202)
 ### remove useless words in French
-collapsed_text27_bis = collapsed_text27.replace(' le ', ' ').replace(' la ', ' ').replace(' les ', ' ').replace(' par ', ' ').replace(' pour ', ' ').replace(' sur ', ' ').replace(' d\'un ', ' ').replace(' d\'une ', ' ').replace(' d ', ' ').replace(' de ', ' ').replace(' du ', ' ').replace(' à ', ' ').replace(' aux ', ' ').replace(' ou ', ' ').replace(' un ', ' ').replace(' une ', ' ').replace(' et ', ' ').replace(' des ', ' ').replace(' en ', ' ').replace(' dans ', ' ')
+collapsed_text202_bis = collapsed_text202.replace(' le ', ' ').replace(' la ', ' ').replace(' les ', ' ').replace(' par ', ' ').replace(' pour ', ' ').replace(' sur ', ' ').replace(' d\'un ', ' ').replace(' d\'une ', ' ').replace(' d ', ' ').replace(' de ', ' ').replace(' du ', ' ').replace(' à ', ' ').replace(' aux ', ' ').replace(' ou ', ' ').replace(' un ', ' ').replace(' une ', ' ').replace(' et ', ' ').replace(' des ', ' ').replace(' en ', ' ').replace(' dans ', ' ')
 ### remove useless words in English
-collapsed_text27_ter = collapsed_text27_bis.replace(' of ', ' ').replace(' the ', ' ').replace(' for ', ' ').replace(' in ', ' ').replace(' at ', ' ').replace(' nan ', ' ').replace('nan ', ' ')
+collapsed_text202_ter = collapsed_text202_bis.replace(' of ', ' ').replace(' the ', ' ').replace(' for ', ' ').replace(' in ', ' ').replace(' at ', ' ').replace(' nan ', ' ').replace('nan ', ' ')
 
 #%%
 """
 ### Use WordCloud class to generate the data to plot
 """
-sci_question_wordcloud = WordCloud(max_font_size=50, max_words=100, background_color="white").generate(collapsed_text27_ter)
+q202_wordcloud = WordCloud(max_font_size=50, max_words=100, background_color="white").generate(collapsed_text202_ter)
 
 #%%
 """
 ### plot of wordcloud for project titles
 """
-fname_plt = 'wordcloud_sci_question.png'
+fname_plt = 'wordcloud_q202_sci_question.png'
 fpath_plt = fdir_sav / fname_plt
 
 plt.figure(1)
 plt.clf()
-plt.imshow(sci_question_wordcloud, interpolation='bilinear')
+plt.imshow(q202_wordcloud, interpolation='bilinear')
 plt.axis("off")
 plt.title('Word cloud for science questions')
 plt.tight_layout()
@@ -215,54 +215,54 @@ plt.show()
 
 #%%
 """
-### Mots-clé
+### 2.4 Mots-clé
 """
-sci_keywords_lst = data_proj['32']
+q204_lst = data_proj['32']
 
-uniquesci_keywords_lst = sci_keywords_lst.unique()
+unique_q204_lst = q204_lst.unique()
 
-sci_keywords_stats  = sci_keywords_lst.value_counts()
+q204_stats  = q204_lst.value_counts()
 
-print(sci_keywords_stats)
+print(q204_stats)
 
 #%%
 """
 ### Process the science keywords data
 """
 ### convert title_lst into a list
-text32 = sci_keywords_lst.tolist()
+text204 = q204_lst.tolist()
 ### join the words from all the input
-collapsed_text32 = (' ').join(str(e) for e in text32)
+collapsed_text204 = (' ').join(str(e) for e in text204)
 ### remove useless words in French
-collapsed_text32_bis = collapsed_text32.replace(' le ', ' ').replace(' la ', ' ').replace(' les ', ' ').replace(' par ', ' ').replace(' pour ', ' ').replace(' sur ', ' ').replace(' d\'un ', ' ').replace(' d\'une ', ' ').replace(' d ', ' ').replace(' de ', ' ').replace(' du ', ' ').replace(' à ', ' ').replace(' aux ', ' ').replace(' ou ', ' ').replace(' un ', ' ').replace(' une ', ' ').replace(' et ', ' ').replace(' des ', ' ').replace(' en ', ' ').replace(' dans ', ' ')
+collapsed_text204_bis = collapsed_text204.replace(' le ', ' ').replace(' la ', ' ').replace(' les ', ' ').replace(' par ', ' ').replace(' pour ', ' ').replace(' sur ', ' ').replace(' d\'un ', ' ').replace(' d\'une ', ' ').replace(' d ', ' ').replace(' de ', ' ').replace(' du ', ' ').replace(' à ', ' ').replace(' aux ', ' ').replace(' ou ', ' ').replace(' un ', ' ').replace(' une ', ' ').replace(' et ', ' ').replace(' des ', ' ').replace(' en ', ' ').replace(' dans ', ' ')
 ### remove useless words in English
-collapsed_text32_ter = collapsed_text32_bis.replace(' of ', ' ').replace(' the ', ' ').replace(' for ', ' ').replace(' in ', ' ').replace(' at ', ' ').replace(' nan ', ' ').replace('nan ', ' ')
+collapsed_text204_ter = collapsed_text204_bis.replace(' of ', ' ').replace(' the ', ' ').replace(' for ', ' ').replace(' in ', ' ').replace(' at ', ' ').replace(' nan ', ' ').replace('nan ', ' ')
 
 #%%
 """
 ### Use WordCloud class to generate the data to plot
 """
-sci_keywords_wordcloud = WordCloud(max_font_size=50, max_words=100, background_color="white").generate(collapsed_text32_ter)
+q204_wordcloud = WordCloud(max_font_size=50, max_words=100, background_color="white").generate(collapsed_text204_ter)
 
 #%%
 """
 ### plot of wordcloud for project titles
 """
-fname_plt = 'wordcloud_sci_keywords.png'
+fname_plt = 'wordcloud_q204_sci_keywords.png'
 fpath_plt = fdir_sav / fname_plt
 
 plt.figure(2)
 plt.clf()
-plt.imshow(sci_keywords_wordcloud, interpolation='bilinear')
+plt.imshow(q204_wordcloud, interpolation='bilinear')
 plt.axis("off")
 plt.title('Word cloud for science keywords')
 plt.tight_layout()
 plt.savefig(fpath_plt)
 plt.show()
 
-# #%%
+#%%
 # """
-# ### Durée projet
+# ### 3.2b Durée projet
 # """
 # project_duration_lst = data_proj['46']
 
@@ -510,5 +510,30 @@ for i in q703_idx_arr:
     
     print(q703_stats)
     print('\n')
- 
+
+    
+#%%
+"""
+### Q7.4 - Soutiendrez-vous des projets R&D matérielle et numérique visant à réduire l’impact environnemental des activités de R&D ? (colonnes OE à OL) - 15*26+5-1 (394) à 15*26+12-1 (401)
+"""
+val = 267
+
+q704_nIni = 394
+q704_nEnd = 401
+q704_nPts = q704_nEnd-q704_nIni+1
+
+q704_idx_arr = q704_nIni + np.arange(q704_nPts)
+
+for i in q704_idx_arr:
+    
+    print(f'column name: {i}')
+    q704_lst = data_proj[f'{i}']
+    
+    unique_q704_lst = q704_lst.unique()
+    
+    q704_stats  = q704_lst.value_counts()
+    
+    print(q704_stats)
+    print('\n')
+
     
