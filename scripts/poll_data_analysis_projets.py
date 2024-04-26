@@ -323,7 +323,7 @@ for i in q406_idx_arr:
 """
 ### Q5.1 - Ressources humaines totales consacrées au projet de R&D  (colonnes GQ à HF) - 7*26+17-1 (198) à 8*26+6-1 (213)
 """
-val = 212
+val = 199
 
 q501_nIni = val
 q501_nEnd = val
