@@ -166,52 +166,153 @@ plt.tight_layout()
 plt.savefig(fpath_plt)
 plt.show()
 
+# #%%
+# """
+# ### 2.2 Question scientifique qui motive le projet
+# """
+# q202_lst = data_proj['27']
+
+# unique_q202_lst = q202_lst.unique()
+
+# q202_stats  = q202_lst.value_counts()
+
+# print(q202_stats)
+
+# #%%
+# """
+# ### Process the science question data
+# """
+# ### convert title_lst into a list
+# text202 = q202_lst.tolist()
+# ### join the words from all the input
+# collapsed_text202 = (' ').join(str(e) for e in text202)
+# ### remove useless words in French
+# collapsed_text202_bis = collapsed_text202.replace(' le ', ' ').replace(' la ', ' ').replace(' les ', ' ').replace(' par ', ' ').replace(' pour ', ' ').replace(' sur ', ' ').replace(' d\'un ', ' ').replace(' d\'une ', ' ').replace(' d ', ' ').replace(' de ', ' ').replace(' du ', ' ').replace(' à ', ' ').replace(' aux ', ' ').replace(' ou ', ' ').replace(' un ', ' ').replace(' une ', ' ').replace(' et ', ' ').replace(' des ', ' ').replace(' en ', ' ').replace(' dans ', ' ')
+# ### remove useless words in English
+# collapsed_text202_ter = collapsed_text202_bis.replace(' of ', ' ').replace(' the ', ' ').replace(' for ', ' ').replace(' in ', ' ').replace(' at ', ' ').replace(' nan ', ' ').replace('nan ', ' ')
+
+# #%%
+# """
+# ### Use WordCloud class to generate the data to plot
+# """
+# q202_wordcloud = WordCloud(max_font_size=50, max_words=100, background_color="white").generate(collapsed_text202_ter)
+
+# #%%
+# """
+# ### plot of wordcloud for project titles
+# """
+# fname_plt = 'wordcloud_q202_sci_question.png'
+# fpath_plt = fdir_sav / fname_plt
+
+# plt.figure(1)
+# plt.clf()
+# plt.imshow(q202_wordcloud, interpolation='bilinear')
+# plt.axis("off")
+# plt.title('Word cloud for science questions')
+# plt.tight_layout()
+# plt.savefig(fpath_plt)
+# plt.show()
+
+
 #%%
 """
-### 2.2 Question scientifique qui motive le projet
+### Q2.2 - Quelle est la question scientifique principale qui motive le projet de R&D ? (colonnes AB) - 1*26+2-1 (27)
 """
-q202_lst = data_proj['27']
+val = 27
 
-unique_q202_lst = q202_lst.unique()
+q202_nIni = 27
+q202_nEnd = 27
+q202_nPts = q202_nEnd-q202_nIni+1
 
-q202_stats  = q202_lst.value_counts()
+q202_idx_arr = q202_nIni + np.arange(q202_nPts)
 
-print(q202_stats)
-
-#%%
-"""
-### Process the science question data
-"""
-### convert title_lst into a list
-text202 = q202_lst.tolist()
-### join the words from all the input
-collapsed_text202 = (' ').join(str(e) for e in text202)
-### remove useless words in French
-collapsed_text202_bis = collapsed_text202.replace(' le ', ' ').replace(' la ', ' ').replace(' les ', ' ').replace(' par ', ' ').replace(' pour ', ' ').replace(' sur ', ' ').replace(' d\'un ', ' ').replace(' d\'une ', ' ').replace(' d ', ' ').replace(' de ', ' ').replace(' du ', ' ').replace(' à ', ' ').replace(' aux ', ' ').replace(' ou ', ' ').replace(' un ', ' ').replace(' une ', ' ').replace(' et ', ' ').replace(' des ', ' ').replace(' en ', ' ').replace(' dans ', ' ')
-### remove useless words in English
-collapsed_text202_ter = collapsed_text202_bis.replace(' of ', ' ').replace(' the ', ' ').replace(' for ', ' ').replace(' in ', ' ').replace(' at ', ' ').replace(' nan ', ' ').replace('nan ', ' ')
-
-#%%
-"""
-### Use WordCloud class to generate the data to plot
-"""
-q202_wordcloud = WordCloud(max_font_size=50, max_words=100, background_color="white").generate(collapsed_text202_ter)
+for i in q202_idx_arr:
+    
+    print(f'column name: {i}')
+    q202_lst = data_proj[f'{i}']
+    
+    unique_q202_lst = q202_lst.unique()
+    
+    q202_stats  = q202_lst.value_counts()
+    
+    print(q202_stats)
+    print('\n')
 
 #%%
 """
-### plot of wordcloud for project titles
+### Q2.3a - Description des objectifs scientifiques (actuels) en lien avec le projet R&D ? (colonnes AD) - 1*26+4-1 (29)
 """
-fname_plt = 'wordcloud_q202_sci_question.png'
-fpath_plt = fdir_sav / fname_plt
+val = 29
 
-plt.figure(1)
-plt.clf()
-plt.imshow(q202_wordcloud, interpolation='bilinear')
-plt.axis("off")
-plt.title('Word cloud for science questions')
-plt.tight_layout()
-plt.savefig(fpath_plt)
-plt.show()
+q203a_nIni = 29
+q203a_nEnd = 29
+q203a_nPts = q203a_nEnd-q203a_nIni+1
+
+q203a_idx_arr = q203a_nIni + np.arange(q203a_nPts)
+
+for i in q203a_idx_arr:
+    
+    print(f'column name: {i}')
+    q203a_lst = data_proj[f'{i}']
+    
+    unique_q203a_lst = q203a_lst.unique()
+    
+    q203a_stats  = q203a_lst.value_counts()
+    
+    print(q203a_stats)
+    print('\n')
+
+#%%
+"""
+### Q2.3b - Description des objectifs scientifiques (visés) en lien avec le projet R&D ? (colonnes AF) - 1*26+6-1 (31)
+"""
+val = 31
+
+q203b_nIni = 31
+q203b_nEnd = 31
+q203b_nPts = q203b_nEnd-q203b_nIni+1
+
+q203b_idx_arr = q203b_nIni + np.arange(q203b_nPts)
+
+for i in q203b_idx_arr:
+    
+    print(f'column name: {i}')
+    q203b_lst = data_proj[f'{i}']
+    
+    unique_q203b_lst = q203b_lst.unique()
+    
+    q203b_stats  = q203b_lst.value_counts()
+    
+    print(q203b_stats)
+    print('\n')
+
+#%%
+"""
+### Q2.4 - Mots clés correspondant au projet scientifique et aux méthodes et techniques utilisées ? (colonnes AG) - 1*26+7-1 (32)
+"""
+val = 32
+
+q204_nIni = 32
+q204_nEnd = 32
+q204_nPts = q204_nEnd-q204_nIni+1
+
+q204_idx_arr = q204_nIni + np.arange(q204_nPts)
+
+for i in q204_idx_arr:
+    
+    print(f'column name: {i}')
+    q204_lst = data_proj[f'{i}']
+    
+    unique_q204_lst = q204_lst.unique()
+    
+    q204_stats  = q204_lst.value_counts()
+    
+    print(q204_stats)
+    print('\n')
+
+
+#%%
+STOP
 
 #%%
 """
