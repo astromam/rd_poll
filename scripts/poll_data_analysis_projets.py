@@ -109,6 +109,18 @@ print(q105_stats)
 
 #%%
 """
+### 1.4+1.5 Genre et âge de la personne porteuse du projet
+"""
+q104105lst = data_proj['10'].loc[data_proj['9'] == 'Autre']
+
+unique104105lst = q104105lst.unique()
+
+q104105_stats = q104105lst.value_counts()
+
+print(q104105_stats)
+
+#%%
+"""
 ### 1.6 Connaissance formation pour la personne ayant répondu
 """
 q106_lst = data_proj['11']
